@@ -28,3 +28,7 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: _build/html/
+
+
+# This action probably does everything for you:
+# https://github.com/marketplace/actions/sphinx-build
