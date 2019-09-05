@@ -4,6 +4,7 @@ on:
     branches:
       - master
 
+# https://gist.github.com/c-bata/ed5e7b7f8015502ee5092a3e77937c99
 jobs:
   release:
     name: Build
@@ -20,3 +21,10 @@ jobs:
       - name: Build Sphinx docs
         run: |
           make html
+
+      # https://github.com/marketplace/actions/deploy-to-github-pages
+      - uses: JamesIves/github-pages-deploy-action@master
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: _build/html/
