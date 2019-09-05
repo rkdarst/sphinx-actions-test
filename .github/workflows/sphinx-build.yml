@@ -1,0 +1,23 @@
+name: sphinx
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    name: Build
+    runs-on: debian-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Build Sphinx docs
+        run: |
+          make html
+      - 
