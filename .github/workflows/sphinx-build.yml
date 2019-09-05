@@ -1,9 +1,12 @@
+# Syntax reference for this file:
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+
 name: sphinx
 on: [push, pull_request]
 
 # https://gist.github.com/c-bata/ed5e7b7f8015502ee5092a3e77937c99
 jobs:
-  release:
+  build-and-delpoy:
     name: Build
     runs-on: ubuntu-latest
     steps:
@@ -19,12 +22,14 @@ jobs:
         run: |
           make html
 
-      # https://github.com/marketplace/actions/deploy-to-github-pages
-      - uses: JamesIves/github-pages-deploy-action@master
+      # https://github.com/marketplace/actions/github-pages
+      - if: success()
+        uses: crazy-max/ghaction-github-pages@master
         env:
-          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: _build/html/
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          target_branch: gh-pages
+          build_dir: _build/html/
 
 
 # This action probably does everything for you:
