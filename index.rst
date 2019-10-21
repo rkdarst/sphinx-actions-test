@@ -11,6 +11,8 @@ Welcome to Test project's documentation!
    :caption: Contents:
 
 
+Version 1.0
+
 
 Indices and tables
 ==================
