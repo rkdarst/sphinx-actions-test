@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to Giuseppe's Test project's documentation!
-========================================
+===================================================
 
 .. toctree::
    :maxdepth: 2
