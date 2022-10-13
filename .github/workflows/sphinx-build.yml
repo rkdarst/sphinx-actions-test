@@ -25,6 +25,12 @@ jobs:
       - name: Build Sphinx docs
         run: |
           make html
+      - name: multipages
+        uses: rkdarst/gh-pages-multibranch@main
+        if: ${{ github.event_name == 'push' }}
+        with:
+          directory: _build/html/
+          default_branch: master
 
       # https://github.com/marketplace/actions/github-pages
       #- if: success()
