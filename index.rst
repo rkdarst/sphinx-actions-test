@@ -10,6 +10,16 @@ Welcome to Test project's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+.. uml::
+
+   @startuml
+   user -> (use PlantUML)
+
+   note left of user
+      Hello!
+   end note
+   @enduml
+
 
 Version 1.0
 

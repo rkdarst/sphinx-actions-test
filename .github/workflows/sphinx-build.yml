@@ -18,6 +18,10 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.8
+      # Install plantuml
+      - name: Install OS package dependencies
+        run: |
+          sudo apt install plantuml
       # I don't know where the "run" thing is documented.
       - name: Install dependencies
         run: |
