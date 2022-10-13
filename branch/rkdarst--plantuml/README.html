@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Demo of Sphix + github actions to deploy it &#8212; Test project  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="demo-of-sphix-github-actions-to-deploy-it">
+<h1>Demo of Sphix + github actions to deploy it<a class="headerlink" href="#demo-of-sphix-github-actions-to-deploy-it" title="Permalink to this heading">¶</a></h1>
+<p>This demonstrates building a Github Action workflow.  Main points:</p>
+<ul class="simple">
+<li><p>Everything in <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code></p></li>
+<li><p>You can have multiple workflow files (presumably)</p></li>
+<li><p>Similar to <code class="docutils literal notranslate"><span class="pre">.travis.yml</span></code> but with custom syntax</p></li>
+<li><p>Each workflow has multiple <strong>steps</strong>.  Each step can be an inline
+shell script or reference to another action.  Actions are written
+with <code class="docutils literal notranslate"><span class="pre">uses:</span></code> and refer to another Github repository where the
+action is defened.  Thus, there is more reusability of certain building
+blocks.</p></li>
+<li><p>For example, the repo is not automatically checked out (because you
+could have actions that run on issues only which comment on the
+issue).  You check out a repository with <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">uses:</span>
+<span class="pre">actions/checkout&#64;v1</span></code> which uses the environment variables to check
+out the repository to <code class="docutils literal notranslate"><span class="pre">.</span></code>.</p></li>
+</ul>
+<p><a class="reference external" href="https://rkdarst.github.io/sphinx-actions-test/">https://rkdarst.github.io/sphinx-actions-test/</a></p>
+<section id="useful-reading">
+<h2>Useful reading<a class="headerlink" href="#useful-reading" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>General actions intro: <a class="reference external" href="https://help.github.com/en/articles/about-github-actions">https://help.github.com/en/articles/about-github-actions</a></p></li>
+<li><p>Description of build environment: <a class="reference external" href="https://help.github.com/en/articles/virtual-environments-for-github-actions">https://help.github.com/en/articles/virtual-environments-for-github-actions</a></p></li>
+<li><p>Full reference for workflow action file syntax: <a class="reference external" href="https://help.github.com/en/articles/workflow-syntax-for-github-actions">https://help.github.com/en/articles/workflow-syntax-for-github-actions</a></p></li>
+</ul>
+</section>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">¶</a></h2>
+<p>This repo doesn’t do “build on PR, deploy on master” - need to find
+the syntax to do that.</p>
+<p>Deployment does not currently work with <code class="docutils literal notranslate"><span class="pre">GITHUB_TOKEN</span></code> because
+pushing back to the repo with this token does not trigger the Github
+Pages building actions.  See
+<a class="reference external" href="https://github.com/maxheld83/ghpages/issues/1">https://github.com/maxheld83/ghpages/issues/1</a> and basically every
+other Github Pages deploy action.</p>
+<p>Workarounds are to make a Personal Access Token (which then has access
+to <em>all</em> your repositories - not good) or perhaps a deploy ssh key
+(which I haven’t seen any pre-build action use).</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Richard Darst.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.2.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/README.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
